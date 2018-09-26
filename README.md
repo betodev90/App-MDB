@@ -30,4 +30,21 @@ Aplicación web que gestiona la información de películas.
 7. Crear las siguientes aplicaciones core, users.
 8. Agregar en el settings.py las aplicaciones creadas en el paso anterior.
 9. En el settings.py agregar una variable `AUTH_USER_MODEL= 'users.CustomUser`.
-10. En `users/models.py` crear el modelo CustomUser con el campo `age` y que herede de `AbstractUser`
+10. En `users/models.py` crear el modelo CustomUser con el campo `age` que tiene que ser  `PositiveIntegerField` y que herede de `AbstractUser`
+11. Crear el fichero `forms.py` en el directorio de la aplicación `users`, es decir `users/forms.py`.
+12.
+13. Agregar en `users/admin.py` la clase de `CustomUser` que hereda del core de django `UserAdmin`.
+
+    ```python
+    from django.contrib import admin
+    from django.contrib.auth.admin import UserAdmin
+
+    from .forms import CustomUserCreationForm, CustomUserChangeForm
+    from .models import CustomUser
+
+    class CustomUserAdmin(UserAdmin):
+        add_form = CustomUserCreationForm
+        form = CustomUserChangeForm
+        list_display = ['email', 'username', 'age']
+        model = CustomUser
+    ```
