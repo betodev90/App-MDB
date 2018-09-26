@@ -13,6 +13,7 @@ Aplicación web que gestiona la información de películas.
 5. Crear un proyecto en django llamado config de la siguiente manera:
     `django-admin.py startproject config .` ó `django-admin.exe startproject config`
 6. Realizar la configuración de la base de datos en el fichero settings.py utilizar la configuración de postgres:
+
     ```python
     DATABASES = {
         'default': {
@@ -25,8 +26,8 @@ Aplicación web que gestiona la información de películas.
         }
     }       
     ```
-    
-    7. Crear las siguientes aplicaciones core, users.
-    8. Agregar en el settings.py las aplicaciones creadas en el paso anterior.
-    9. En el settings.py agregar una variable `AUTH_USER_MODEL= 'users.CustomUser`.
-    10. En `users/models.py` crear el modelo CustomUser con el campo `age` y que herede de `AbstractUser`
+
+7. Crear las siguientes aplicaciones core, users.
+8. Agregar en el settings.py las aplicaciones creadas en el paso anterior.
+9. En el settings.py agregar una variable `AUTH_USER_MODEL= 'users.CustomUser`.
+10. En `users/models.py` crear el modelo CustomUser con el campo `age` y que herede de `AbstractUser`
