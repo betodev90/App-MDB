@@ -33,23 +33,23 @@ Aplicación web que gestiona la información de películas.
 9. En el settings.py agregar una variable `AUTH_USER_MODEL= 'users.CustomUser`.
 
 #### Aplicación Users
-    Esta aplicación se encargará de la gestioón de los usuarios que puedan acceder al proyecto web MyMDB.
+Esta aplicación se encargará de la gestioón de los usuarios que puedan acceder al proyecto web MyMDB.
 
-    1. En `users/models.py` crear el modelo CustomUser con el campo `age` que tiene que ser  `PositiveIntegerField` y que herede de `AbstractUser`
-    2. Crear el fichero `forms.py` en el directorio de la aplicación `users`.
-    3. 
-    4. Agregar en `users/admin.py` la clase de `CustomUser` que hereda del core de django `UserAdmin`.
+1. En `users/models.py` crear el modelo CustomUser con el campo `age` que tiene que ser  `PositiveIntegerField` y que herede de `AbstractUser`
+2. Crear el fichero `forms.py` en el directorio de la aplicación `users`.
+3. 
+4. Agregar en `users/admin.py` la clase de `CustomUser` que hereda del core de django `UserAdmin`.
 
-        ```python
-        from django.contrib import admin
-        from django.contrib.auth.admin import UserAdmin
+    ```python
+    from django.contrib import admin
+    from django.contrib.auth.admin import UserAdmin
 
-        from .forms import CustomUserCreationForm, CustomUserChangeForm
-        from .models import CustomUser
+    from .forms import CustomUserCreationForm, CustomUserChangeForm
+    from .models import CustomUser
 
-        class CustomUserAdmin(UserAdmin):
-            add_form = CustomUserCreationForm
-            form = CustomUserChangeForm
-            list_display = ['email', 'username', 'age']
-            model = CustomUser
-        ```
+    class CustomUserAdmin(UserAdmin):
+        add_form = CustomUserCreationForm
+        form = CustomUserChangeForm
+        list_display = ['email', 'username', 'age']
+        model = CustomUser
+    ```
