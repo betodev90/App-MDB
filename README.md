@@ -33,7 +33,7 @@ Aplicación web que gestiona la información de películas.
 9. En el settings.py agregar una variable `AUTH_USER_MODEL= 'users.CustomUser`.
 
 #### Aplicación Users
-Esta aplicación se encargará de la gestioón de los usuarios que puedan acceder al proyecto web MyMDB.
+__Esta aplicación se encargará de la gestioón de los usuarios que puedan acceder al proyecto web MyMDB__.
 
 1. En `users/models.py` crear el modelo CustomUser con el campo `age` que tiene que ser  `PositiveIntegerField` y que herede de `AbstractUser`
 2. Crear el fichero `forms.py` en el directorio de la aplicación `users`.
