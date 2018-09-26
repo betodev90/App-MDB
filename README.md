@@ -65,11 +65,11 @@ __Esta aplicación se encargará de la gestión de los usuarios que puedan acced
 __Procedimiento para la autenticación de los Usuarios al proyecto web (Login, Logout, Signup de usuarios)__
 
 1. Crear un directorio templates/registration/, pero para que django lo encuentre se realiza la configuración en el settings.py variable `TEMPLATES`.
-
-2. Segun el flujo cada vez que un usuario haga login o logout al sistema se configura la ruta a donde lo redirige después de estos eventos, esto se agrega en el settings.py. 
+2. Crea cuatro ficheros html (`templates/registration/login.html`, `templates/base.html`, `templates/home.html`, `templates/signup.html`)
+3. Segun el flujo cada vez que un usuario haga login o logout al sistema se debe configurar la ruta a donde lo redirige después de estos eventos, esto se agrega en el settings.py. 
     ```python
     LOGIN_REDIRECT_URL = 'home'
     LOGOUT_REDIRECT_URL = 'home'
     ```
-3. 
+4. Crear un archivo urls.py en el directorio de la aplicación `users`.
 
