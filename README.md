@@ -33,11 +33,17 @@ Aplicación web que gestiona la información de películas.
 9. En el settings.py agregar una variable `AUTH_USER_MODEL= 'users.CustomUser`.
 
 #### Aplicación Users
-__Esta aplicación se encargará de la gestioón de los usuarios que puedan acceder al proyecto web MyMDB__.
+__Esta aplicación se encargará de la gestión de los usuarios que puedan acceder al proyecto web MyMDB__.
 
 1. En `users/models.py` crear el modelo CustomUser con el campo `age` que tiene que ser  `PositiveIntegerField` y que herede de `AbstractUser`
 2. Crear el fichero `forms.py` en el directorio de la aplicación `users`.
-3. 
+3. Crear dos formularios el primero para crear un usuario y el otro para modificar la información del mismo. Llamar a las clases `CustomUserCreateForm` y `CustomUserEditForm`.
+    ```python
+    from django import forms
+    # Importar del core auth de django
+    from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+    from .models import CustomUser
+    ```
 4. Agregar en `users/admin.py` la clase de `CustomUser` que hereda del core de django `UserAdmin`.
 
     ```python
