@@ -25,6 +25,7 @@ Aplicación web que gestiona la información de películas.
         }
     }       
     ```
+    
     7. Crear las siguientes aplicaciones core, users.
     8. Agregar en el settings.py las aplicaciones creadas en el paso anterior.
     9. En el settings.py agregar una variable `AUTH_USER_MODEL= 'users.CustomUser`.
