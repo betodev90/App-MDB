@@ -13,7 +13,7 @@ Aplicación web que gestiona la información de películas.
 4. Verificar que se instale django si no proceda a instalar en su virtualenv django con el comando revisado en clase.
     `pipenv install django`
 5. Crear un proyecto en django llamado config de la siguiente manera:
-    `django-admin.py startproject config .` ó `django-admin.exe startproject config`
+    `django-admin.py startproject config .` ó `django-admin.exe startproject config .`
 6. Realizar la configuración de la base de datos en el fichero settings.py utilizar la configuración de postgres:
 
     ```python
@@ -72,4 +72,17 @@ __Procedimiento para la autenticación de los Usuarios al proyecto web (Login, L
     LOGOUT_REDIRECT_URL = 'home'
     ```
 4. Crear un archivo urls.py en el directorio de la aplicación `users`.
-
+5. En el nivel de configuración del proyecto `config/urls.py` incluir el archivo urls de la aplicación `users`.
+    ```python
+    # config/urls.py
+    from django.contrib import admin
+    from django.urls import path, include
+    from django.views.generic.base import TemplateView
+    
+    urlpatterns = [
+        path('', TemplateView.as_view(template_name='home.html'), name='home'),
+        path('admin/', admin.site.urls),
+        path('users/', include('users.urls')),
+        path('users/', include('django.contrib.auth.urls')),
+    ]
+    ```  
