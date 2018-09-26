@@ -8,5 +8,6 @@ Aplicación web que gestiona la información de películas.
 2. Verificar al clonar el repositorio que se tenga los ficheros Pipfile y Pipfile.lock correspondiente a su versión de python, si no es así modificar los ficheros.
 3. Activar el entorno virtual con el comando.
     `pipenv shell`
-
+4. Verificar que se instale django si no proceda a instalar en su virtualenv django con el comando revisado en clase.
+    `pipenv install django`
 
