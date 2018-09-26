@@ -39,6 +39,7 @@ __Esta aplicación se encargará de la gestión de los usuarios que puedan acced
 1. En `users/models.py` crear el modelo CustomUser con el campo `age` que tiene que ser  `PositiveIntegerField` y que herede de `AbstractUser`
 2. Crear el fichero `forms.py` en el directorio de la aplicación `users`.
 3. Crear dos formularios el primero para crear un usuario y el otro para modificar la información del mismo. Llamar a las clases `CustomUserCreateForm` y `CustomUserEditForm`.
+
     ```python
     from django import forms
     # Importar del core auth de django
@@ -66,13 +67,16 @@ __Procedimiento para la autenticación de los Usuarios al proyecto web (Login, L
 
 1. Crear un directorio templates/registration/, pero para que django lo encuentre se realiza la configuración en el settings.py variable `TEMPLATES`.
 2. Crea cuatro ficheros html (`templates/registration/login.html`, `templates/base.html`, `templates/home.html`, `templates/signup.html`)
-3. Segun el flujo cada vez que un usuario haga login o logout al sistema se debe configurar la ruta a donde lo redirige después de estos eventos, esto se agrega en el settings.py. 
+3. Segun el flujo cada vez que un usuario haga login o logout al sistema se debe configurar la ruta a donde lo redirige después de estos eventos, esto se agrega en el settings.py.
+
     ```python
     LOGIN_REDIRECT_URL = 'home'
     LOGOUT_REDIRECT_URL = 'home'
     ```
+
 4. Crear un archivo urls.py en el directorio de la aplicación `users`.
 5. En el nivel de configuración del proyecto `config/urls.py` incluir el archivo urls de la aplicación `users`.
+    
     ```python
     # config/urls.py
     from django.contrib import admin
