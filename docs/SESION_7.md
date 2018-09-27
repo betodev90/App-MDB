@@ -112,3 +112,11 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
 10. Crear un directorio para agrupar los HTMLs respectivos a las vistas de Movies, nombrar al directorio `templates/movies/` y crear `templates/movies/movie_detail.html`, `templates/movies/movie_list.html`
 11. Agregar la vista de Detalle de Movies es decir `MoviesDetail`.
 12. Configure la ruta en `core/urls.py`.
+
+### Agregando paginación
+1. Agregue en el modelo `Movie` que ordene por los campos `year`, `title`.
+2. Modificar el html `templates/movies/movie_list.html` para agregar la paginación copiar el fragmento de html que se encuentra en el siguiente enlace [link](https://gist.github.com/betodev90/507a712e406f8f6e76604ab21cc295ec)
+3. Utilizar el template tag de django para incluir fragmento de código.
+    ```python
+    {% include 'page.html' %}
+    ```
