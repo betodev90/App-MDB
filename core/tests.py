@@ -23,9 +23,12 @@ class MovieListPaginationTestCase(TestCase):
     def testFirstPage(self):
         # Obtiene el path desde el name de una url previamente definida
         movie_list_path = reverse('core:MovieList') # /movies
+        # Hace la solicitud objeto request a una vista falsa
         request = RequestFactory().get(path=movie_list_path)
+        # Llamado a la vista obtiene un objeto HttResponse / response
         response = MovieList.as_view()(request)
 
+        # Metodos de la libreria Test de django que verifica que se debe obtener lo esperado
         self.assertEqual(200, response.status_code)
         self.assertTrue(response.context_data['page_is_first'])
         self.assertFalse(response.context_data['page_is_last'])

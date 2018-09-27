@@ -137,8 +137,8 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
             return ctx
     ```
 5. A continuación avance con el capitulo de tests. En el directorio `core/tests` se encuentra el fichero para realizar las pruebas automaticas.
-6. Se procede a crear un Test Automático de la vista MovieList para verificar su correcto funcionamiento.
-7. En el fichero `core/tests.py` agregar las siguientes importaciones.
+6. Se procede a crear un Test Automático de la vista MovieList y verificar su correcto funcionamiento. En el fichero `core/tests.py` agregar las siguientes importaciones.
+
     ```python
     # Libreria propia para hacer los Test
     from django.test import TestCase
@@ -151,7 +151,7 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
     from .views import MovieList
     ```
 
-8. Crear la clase `class MovieListPaginationTestCase(TestCase)`
+8. En el fichero `core/tests.py` crear la clase `class MovieListPaginationTestCase(TestCase)`
     
     ```python
 
@@ -184,4 +184,8 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
                 self.ACTIVE_PAGINATION_HTML.format(movie_list_path, 1, 1),
                 response.rendered_content
             )
+    ```
+9. Para ejecutar los tests.
+    ```python
+    python manage.py test
     ```
