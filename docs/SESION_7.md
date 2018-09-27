@@ -1,6 +1,6 @@
 # Sesión 7
 
-### Para continuar
+### Para continuar...
 1. Haga el siguiente flujo de trabajo utilizando git.
     
     ```git
@@ -16,17 +16,24 @@
 
 3. En este paso verifique si se realizo las actualizaciones de directorios y ficheros del proyecto.
 
-### Agregando librerías de terceros
+## Agregando librerías de terceros
 
-## Agregando características en la aplicación `users`
+### Agregando características en la aplicación `users`
 
 1. Elegiremos el paquete de terceros `django-crispy-forms`, para agregarlo a los formularios. Para esto utilizar pipenv para instalar el paquete al proyecto.
     ```python
     pipenv install django-crispy-forms
     ```
 2. Agregar al settings.py en la variable `INSTALLED_APPS`.
+    ```python
+        INSTALLED_APPS = [
+            ...
+            'crispy_forms',
+            ...
+        ]
+    ```
 
-3. Configure y agregue la siguiente variable de configuración en el `settings.py`.
+3. Agregar y configurar la variable del paquete instalado previamente en el `settings.py`.
     ```python
     CRISPY_TEMPLATE_PACK = 'bootstrap4'
     ```
