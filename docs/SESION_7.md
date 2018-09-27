@@ -10,6 +10,7 @@
     ```
 
 2. En este punto se han creado `tags` usando `git` para que accedan directamente a la versión requerida para avanzar con el proyecto, para esto ejecute el siguiente comando:
+    
     ```git 
     git checkout tags/v.1.0.1
     ```
@@ -44,3 +45,29 @@
     {% load crispy_forms_tags %}
     ...
     ```
+
+## Empezando con la aplicación `core`
+
+Esta aplicación gestiona el ingreso, listado, modificación y eliminación de las películas. Además los usuarios del sistema podrán votar por su película favorita.
+
+1. Agregar el primer modelo a la aplicación `core`, el modelo `Movie` con los siguientes campos (`title`, `plot`, `year`, `rating`, `website`).
+
+    ```python
+    NOT_RATED = 0
+    RATED_G = 1
+    RATED_PG = 2
+    RATED_R = 3
+    RATINGS = (
+        (NOT_RATED, 'NR - Sin Clasificar'),
+        (RATED_G, 'G - Audiencia General'),
+        (RATED_PG, 'PG - Bajo supervision de los padres'),
+        (RATED_R, 'R - Restringido'),
+    )
+    title: models.CharField(max_length=140) # Representa el título de la película
+    plot: models.TextField()  # Permite agregar parrafos en este caso un argumento sobre la pelicula.
+    year = models.PositiveIntegerField() # Indica el año de lanzamiento de la pelicula
+    rating = models.IntegerField(choices=RATINGS, default=NOT_RATED) # Explicación
+    website = models.URLField(blank=True)
+    ```
+
+2. Agregue el método `__str__` al modelo Movie.
