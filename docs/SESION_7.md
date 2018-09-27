@@ -4,6 +4,7 @@
 1. Haga el siguiente flujo de trabajo utilizando git.
     
     ```git
+    git fetch   # Para actualizar los tags que tiene el repositorio remoto
     git status  # revisa el estado de sus cambios
     git add .   # Agregue todos sus cambios
     git commit -m "<menaje>"
