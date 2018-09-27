@@ -269,4 +269,27 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
 
 5. Crear las migraciones de la aplicación `core` con los comandos: `makemigrations` y `migrate`.
 
+### Creando una vista `PersonView`
 
+La vista `PersonDetail` view listará todas las peliculas (`Movie`) en las que una persona (`Person`) esta actuando, escribiendo, dirigiendo. 
+
+1. Para optimizar las consultas a la base de datos se procede a crear Managers y así los Queryset sean lo más ligeros posibles.
+
+    ```python
+    # para evitar la consulta pesada ej: person.role_set.all() hace uno por cada rol.
+    class PersonManager(models.Manager):
+        
+        def all_optimized_movies(self):
+            qs = self.get_queryset()
+            # Al usar el `prefetch_related` django consultará todos los datos relacionados en una sola relación en una única consulta adicional.
+            return qs.prefetch_related('directed', 'writing_credits', 'role_set__movie')
+    ```
+
+2. Agregue la columna `objects` al modelo `Person`.
+
+    ```python
+    # class Person(models.Model)
+    ...
+    objects = PersonManager()
+    ...
+    ```
