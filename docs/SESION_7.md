@@ -190,3 +190,83 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
     ```python
     python manage.py test
     ```
+
+### Agregando modelo Persona
+
+1. Crear un modelo `Person` en `core/models.py`.
+    ```python
+        class Person(models.Model):
+            first_name = models.CharField(max_length=140)
+            last_name = models.CharField(max_length=140)
+            born = models.DateField()
+            died = models.DateField(null=True, blank=True)
+            objects = PersonManager()
+
+            class Meta:
+                ordering = ('last_name', 'first_name')
+
+            def __str__(self):
+                if self.died:
+                    return '{}, {} ({}-{})'.format(
+                        self.last_name,
+                        self.first_name,
+                        self.born,
+                        self.died)
+                return '{}, {} ({})'.format(
+                        self.last_name,
+                        self.first_name,
+                        self.born)
+    ```
+
+2. En el modelo `Movie` defina que cada película tenga un director, pero cada director puede dirigir muchas películas para esto se establece un ForeignKey como puede ver a continuación:
+    ```python
+    # class Movie(models.Model):
+    ...
+    director = models.ForeignKey(
+        to='Person',    # modelo a relacionar
+        null=True,      # Puede ser null
+        on_delete=models.SET_NULL, # Django necesita la instruccion de que hacer si el modelo referenciado es borrado, en este caso se mantiene NULL si el campo director es borrado.
+        related_name='directed',    # Argumento opcional que indica el nombre que se utilizará para las consultas entre ambos modelos.
+        blank=True)     # No requerido si se crea desde el admin.
+    ...
+    ```
+3. En el modelo `Movie` agregar una columna `writers` que representa escritor con la definicion de que cada película puede ser escrita por varios escritores y un escritor puede escribir muchas peliculas.
+
+    ```python
+    ...
+    writers = models.ManyToManyField(
+        to='Person',
+        related_name='writing_credits',
+        blank=True
+    )
+    ...
+    ```
+4. En el modelo `Movie` agragar la columna `actors` con una relacion de muchos a muchos entre el modelo `Person` y `Movie` pero agregando un modelo intermedio que se debe crear llamado `Role`.
+
+    ```python
+    # class Movie(models.Model):
+    ...
+    actors = models.ManyToManyField(
+        to='Person',
+        through='Role',
+        related_name='acting_credits',
+        blank=True)
+    ...
+    ```
+
+    ```python
+        class Role(models.Model):
+            movie = models.ForeignKey(Movie, on_delete=models.DO_NOTHING)
+            person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
+            name = models.CharField(max_length=140)
+
+            def __str__(self):
+                return "{} {} {}".format(self.movie_id, self.person_id, self.name)
+
+            class Meta:
+                unique_together = ('movie', 'person', 'name')
+    ```
+
+5. Crear las migraciones de la aplicación `core` con los comandos: `makemigrations` y `migrate`.
+
+
