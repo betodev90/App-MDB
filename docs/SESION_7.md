@@ -96,4 +96,16 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
     ```
 
 7. Crear un fichero `urls.py` en la aplicación `core`, `core/urls.py`
-8.  
+8. Configurar el fichero `core/urls.py` para agregar la vista que se creo previamente.
+
+    ```python
+    from django.urls import path
+    from . import views
+
+    app_name = 'core'
+    urlpatterns = [
+        path('movies', views.MovieList.as_view(), name='MovieList'),
+    ]
+    ```
+
+9. Enlazar la ruta en `config/urls.py` 
