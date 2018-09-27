@@ -71,3 +71,10 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
     ```
 
 2. Agregue el método `__str__` al modelo Movie.
+
+3. Ejecute las migraciones.
+    
+    ````python
+    python manage.py makemigrations core
+    python manage.py migrate core
+    ```
