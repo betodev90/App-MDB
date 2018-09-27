@@ -20,6 +20,9 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    # path('users/', include('users.urls')),
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
+    # La razón es que la aplicación de autenticación integrada ya proporciona vistas 
+    # y direcciones URL para iniciar sesión y cerrar sesión. 
+    path('users/', include('django.contrib.auth.urls')),
 ]
