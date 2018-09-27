@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic.base import TemplateView
+# from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('admin/', admin.site.urls),
+    # path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('', include('core.urls', namespace='core')),
     path('users/', include('users.urls', namespace='users')),
     # La razón es que la aplicación de autenticación integrada ya proporciona vistas 
     # y direcciones URL para iniciar sesión y cerrar sesión. 

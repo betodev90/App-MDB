@@ -108,6 +108,7 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
     ]
     ```
 
-9. Enlazar la ruta en `config/urls.py`
+9. Enlazar la ruta principal del proyecto en `config/urls.py`
 10. Crear un directorio para agrupar los HTMLs respectivos a las vistas de Movies, nombrar al directorio `templates/movies/` y crear `templates/movies/movie_detail.html`, `templates/movies/movie_list.html`
 11. Agregar la vista de Detalle de Movies es decir `MoviesDetail`.
+12. Configure la ruta en `core/urls.py`.

@@ -1,0 +1,7 @@
+{% extends "base.html" %} {% block content %}
+<ul>
+    {% for movie in object_list %}
+    <li>{{movie}}</li>
+    {% empty %} No tiene peliculas en la aplicación {% endfor %}
+</ul>
+{% endblock %}
