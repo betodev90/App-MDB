@@ -64,8 +64,8 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
         (RATED_PG, 'PG - Bajo supervision de los padres'),
         (RATED_R, 'R - Restringido'),
     )
-    title: models.CharField(max_length=140) # Representa el título de la película
-    plot: models.TextField()  # Permite agregar parrafos en este caso un argumento sobre la pelicula.
+    title = models.CharField(max_length=140) # Representa el título de la película
+    plot = models.TextField()  # Permite agregar parrafos en este caso un argumento sobre la pelicula.
     year = models.PositiveIntegerField() # Indica el año de lanzamiento de la pelicula
     rating = models.IntegerField(choices=RATINGS, default=NOT_RATED) # Explicación
     website = models.URLField(blank=True)
@@ -75,7 +75,7 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
 
 3. Ejecute las migraciones.
     
-    ````python
+    ```python
     python manage.py makemigrations core
     python manage.py migrate core
     ```
