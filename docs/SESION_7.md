@@ -9,14 +9,14 @@
     git add .   # Agregue todos sus cambios
     git commit -m "<menaje>"
     ```
-
-2. En este punto se han creado `tags` usando `git` para que accedan directamente a la versión requerida para avanzar con el proyecto, para esto ejecute el siguiente comando:
+2. Tener cuidado con la configuración realizada en su proyecto local `settings.py`, respalde las credenciales de base de datos, antes de seguir al siguiente paso.
+3. En este punto se han creado `tags` usando `git` para que accedan directamente a la versión requerida para avanzar con el proyecto, para esto ejecute el siguiente comando:
     
     ```git 
     git checkout tags/v.1.0.1
     ```
 
-3. En este paso verifique si se realizo las actualizaciones de directorios y ficheros del proyecto.
+4. En este paso verifique si se realizo las actualizaciones de directorios y ficheros del proyecto.
 
 ## Agregando librerías de terceros
 
@@ -111,4 +111,3 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
 9. Enlazar la ruta en `config/urls.py`
 10. Crear un directorio para agrupar los HTMLs respectivos a las vistas de Movies, nombrar al directorio `templates/movies/` y crear `templates/movies/movie_detail.html`, `templates/movies/movie_list.html`
 11. Agregar la vista de Detalle de Movies es decir `MoviesDetail`.
-12. 
