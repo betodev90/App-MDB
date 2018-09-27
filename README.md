@@ -100,7 +100,17 @@ __Procedimiento para la autenticación de los Usuarios al proyecto web (Login, L
     ```
 
 4. Crear un archivo urls.py en el directorio de la aplicación `users`.
-5. En el nivel de configuración del proyecto `config/urls.py` incluir el archivo urls de la aplicación `users`.
+5. Configurar la ruta para crear usuarios en el archivo `users/urls.py`.
+
+    ```python
+        from django.urls import path
+        from .views import SignUp
+        urlpatterns = [
+            path('signup/', SignUp.as_view(), name='signup'),
+        ]
+    ```
+
+6. En el nivel de configuración del proyecto `config/urls.py` incluir el archivo urls de la aplicación `users`.
     
     ```python
     # config/urls.py
@@ -112,6 +122,7 @@ __Procedimiento para la autenticación de los Usuarios al proyecto web (Login, L
         path('', TemplateView.as_view(template_name='home.html'), name='home'),
         path('admin/', admin.site.urls),
         path('users/', include('users.urls')),
+        # También se debe incluir la aplicación de autenticación integrada ya que  proporciona vistas y direcciones URL para iniciar sesión y cerrar sesión. 
         path('users/', include('django.contrib.auth.urls')),
     ]
     ```
