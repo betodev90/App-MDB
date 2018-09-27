@@ -1,7 +1,18 @@
-{% extends "base.html" %} {% block content %}
-<ul>
-    {% for movie in object_list %}
-    <li>{{movie}}</li>
-    {% empty %} No tiene peliculas en la aplicación {% endfor %}
-</ul>
+{% extends "base.html" %}
+
+{% block title %}
+    Películas
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for movie in object_list %}
+            <li>
+                <a href="{% url 'core:MovieDetail' pk=movie.id %}">
+                    {{movie}}
+                </a>
+            </li>
+        {% empty %}No tiene peliculas en la aplicación {% endfor %}
+        {% endfor %}
+    </ul>
 {% endblock %}
