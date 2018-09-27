@@ -14,6 +14,7 @@
     
     ```git 
     git checkout tags/v.1.0.1
+    git checkout -b v.1.0.1
     ```
 
 4. En este paso verifique si se realizo las actualizaciones de directorios y ficheros del proyecto.
