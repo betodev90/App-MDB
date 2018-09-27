@@ -16,3 +16,24 @@
 
 3. En este paso verifique si se realizo las actualizaciones de directorios y ficheros del proyecto.
 
+### Agregando librerías de terceros
+
+## Agregando características en la aplicación `users`
+
+1. Elegiremos el paquete de terceros `django-crispy-forms`, para agregarlo a los formularios. Para esto utilizar pipenv para instalar el paquete al proyecto.
+    ```python
+    pipenv install django-crispy-forms
+    ```
+2. Agregar al settings.py en la variable `INSTALLED_APPS`.
+
+3. Configure y agregue la siguiente variable de configuración en el `settings.py`.
+    ```python
+    CRISPY_TEMPLATE_PACK = 'bootstrap4'
+    ```
+
+4. Editar el archivo html `templates/signup.html` especificamente cargue la librería en el template.
+    ```
+    {% extends 'base.html' %}
+    {% load crispy_forms_tags %}
+    ...
+    ```
