@@ -12,7 +12,9 @@
                     {{movie}}
                 </a>
             </li>
-        {% empty %}No tiene peliculas en la aplicación {% endfor %}
+        {% empty %}
+        No tiene peliculas en la aplicación 
         {% endfor %}
     </ul>
+    {% include 'includes/pagination.html' with page_obj=page_obj %}
 {% endblock %}

@@ -82,7 +82,7 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
 
 4. Agregar al admin site de Django el modelo `Movie`. Agregar filtro por `rating`.
 
-5. Crear vista para listar las peliculas - utilizando Vistas basadas en clase (VCBs), revisar la referencia: [link]( https://ccbv.co.uk/){:target="_blank"}.
+5. Crear vista para listar las peliculas - utilizando Vistas basadas en clase (VCBs), revisar la referencia: [link]( https://ccbv.co.uk/).
 
 6. Usando vista basada en clase, `MovieList`.
 
@@ -115,8 +115,73 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
 
 ### Agregando paginación
 1. Agregue en el modelo `Movie` que ordene por los campos `year`, `title`.
-2. Modificar el html `templates/movies/movie_list.html` para agregar la paginación copiar el fragmento de html que se encuentra en el siguiente enlace [link](https://gist.github.com/betodev90/507a712e406f8f6e76604ab21cc295ec){:target="_blank"}
+2. Modificar el html `templates/movies/movie_list.html` para agregar la paginación copiar el fragmento de html que se encuentra en el siguiente enlace [link](https://gist.github.com/betodev90/507a712e406f8f6e76604ab21cc295ec)
 3. Utilizar el template tag de django para incluir fragmento de código.
     ```python
     {% include 'page.html' %}
+    ```
+
+4. Modificar la vista `MovieList`.
+    ```python
+    class MovieList(ListView):
+        model = Movie
+        paginate_by = 10
+        template_name = 'movies/movie_list.html'
+
+        def get_context_data(self, **kwargs):
+            ctx = super(MovieList, self).get_context_data(**kwargs)
+            page = ctx['page_obj']
+            paginator = ctx['paginator']
+            ctx['page_is_first'] = (page.number == 1)
+            ctx['page_is_last'] = (page.number == paginator.num_pages)
+            return ctx
+    ```
+5. A continuación avance con el capitulo de tests. En el directorio `core/tests` se encuentra el fichero para realizar las pruebas automaticas.
+6. Se procede a crear un Test Automático de la vista MovieList para verificar su correcto funcionamiento.
+7. En el fichero `core/tests.py` agregar las siguientes importaciones.
+    ```python
+    # Libreria propia para hacer los Test
+    from django.test import TestCase
+    # Libreria de test para simular una solicitud request de una vista
+    from django.test.client import RequestFactory
+    # Libreria de django que obtiene el path / url metodo `reverse`
+    from django.urls.base import reverse
+
+    from .models import Movie
+    from .views import MovieList
+    ```
+
+8. Crear la clase `class MovieListPaginationTestCase(TestCase)`
+    
+    ```python
+
+    class MovieListPaginationTestCase(TestCase):
+        ACTIVE_PAGINATION_HTML = """
+        <li class="page-item active">
+        <a href="{}?page={}" class="page-link">{}</a>
+        </li>
+        """
+
+        def setUp(self):
+            for n in range(15):
+                Movie.objects.create(title='Title {}'.format(n),
+                    year=1990 + n
+                )
+
+        def testFirstPage(self):
+            # Obtiene el path desde el name de una url previamente definida
+            movie_list_path = reverse('core:MovieList') # /movies
+            # Hace la solicitud objeto request a una vista falsa
+            request = RequestFactory().get(path=movie_list_path)
+            # Llamado a la vista obtiene un objeto HttResponse / response
+            response = MovieList.as_view()(request)
+
+            # Metodos de la libreria Test de django que verifica que se debe obtener lo esperado
+            self.assertEqual(200, response.status_code)
+            self.assertTrue(response.context_data['page_is_first'])
+            self.assertFalse(response.context_data['page_is_last'])
+            self.assertInHTML(
+                self.ACTIVE_PAGINATION_HTML.format(movie_list_path, 1, 1),
+                response.rendered_content
+            )
     ```
