@@ -82,7 +82,7 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
 
 4. Agregar al admin site de Django el modelo `Movie`. Agregar filtro por `rating`.
 
-5. Crear vista para listar las peliculas - utilizando Vistas basadas en clase (VCBs), revisar la referencia: [link]( https://ccbv.co.uk/).
+5. Crear vista para listar las peliculas - utilizando Vistas basadas en clase (VCBs), revisar la referencia: [link]( https://ccbv.co.uk/){:target="_blank"}.
 
 6. Usando vista basada en clase, `MovieList`.
 
@@ -115,7 +115,7 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
 
 ### Agregando paginación
 1. Agregue en el modelo `Movie` que ordene por los campos `year`, `title`.
-2. Modificar el html `templates/movies/movie_list.html` para agregar la paginación copiar el fragmento de html que se encuentra en el siguiente enlace [link](https://gist.github.com/betodev90/507a712e406f8f6e76604ab21cc295ec)
+2. Modificar el html `templates/movies/movie_list.html` para agregar la paginación copiar el fragmento de html que se encuentra en el siguiente enlace [link](https://gist.github.com/betodev90/507a712e406f8f6e76604ab21cc295ec){:target="_blank"}
 3. Utilizar el template tag de django para incluir fragmento de código.
     ```python
     {% include 'page.html' %}
