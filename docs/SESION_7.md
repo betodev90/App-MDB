@@ -70,7 +70,7 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
     website = models.URLField(blank=True)
     ```
 
-2. Agregue el método `__str__` al modelo Movie.
+2. Agregue el método `__str__` al modelo Movie, con formato `title` y `year`.
 
 3. Ejecute las migraciones.
     
@@ -78,3 +78,21 @@ Esta aplicación gestiona el ingreso, listado, modificación y eliminación de l
     python manage.py makemigrations core
     python manage.py migrate core
     ```
+
+4. Agregar al admin site de Django el modelo `Movie`. Agregar filtro por `rating`.
+
+5. Crear vista para listar las peliculas - utilizando Vistas basadas en clase (VCBs), revisar la referencia: [link]( https://ccbv.co.uk/).
+
+6. Usando vista basada en clase, `MovieList`.
+
+    ```python
+    from django.shortcuts import redirect
+    from django.urls import reverse
+    from django.views.generic import (ListView, DetailView, UpdateView, CreateView)
+
+    class MovieList(ListView):
+        model = Movie
+    ```
+
+7. Crear un fichero `urls.py` en la aplicación `core`, `core/urls.py`
+8.  
