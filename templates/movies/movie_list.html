@@ -5,16 +5,50 @@
 {% endblock %}
 
 {% block content %}
-    <ul>
-        {% for movie in object_list %}
-            <li>
-                <a href="{% url 'core:MovieDetail' pk=movie.id %}">
-                    {{movie}}
-                </a>
-            </li>
-        {% empty %}
-        No tiene peliculas en la aplicación 
-        {% endfor %}
-    </ul>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+              <th scope="col">Título</th>
+                <th scope="col">Año</th>
+              <th scope="col">Website</th>
+              <th scope="col">Email</th>
+              <th scope="col">Estado</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in object_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'core:MovieDetail' pk=movie.id %}">
+                            {{movie.title}}
+                        </a>
+                    </td>
+                    <td>{{ movie.year }}</td>
+                    <td>{{ movie.website|default_if_none:'' }}</td>
+                    <td>{{ movie.rating }}</td>
+                    <td class="text-center">
+                        <div class="btn-group mr30">
+                            <a class="btn btn-primary active" data-toggle="tooltip" data-placement="top" title="Editar"
+                                    href="#">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn btn-warning active" data-toggle="tooltip" data-placement="top" title="Ver detalle"
+                                    href="#">
+                                <i class="fa fa-id-card" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" 
+                            title="Eliminar" href="#">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% empty %}
+                <h4>No existe información que mostrar.</h4>
+            {% endfor %}
+        </tbody>
+    </table>
+
     {% include 'includes/pagination.html' with page_obj=page_obj %}
 {% endblock %}
