@@ -44,4 +44,6 @@ Puesta en marcha un proyecto django en este caso utilizaremos Heroku que es un s
 
 8. Crear archivo `Procfile` archivo especifico para deploy en Heroku.
 
-9. 
+9. En el archivo creado `Procfile` agregar la siguiente línea.
+    ```web: gunicorn config.wsgi --log-file -```
+
