@@ -157,6 +157,7 @@ Los pasos siguientes son configurar en Heroku.
 14. Cambiar la configuración en el setting.py variable `DATABASE`, en este ejemplo:
     
     ```python
+    # Recordar que es un aleatorio que genera Heroku revisar las credenciales y hacer los cambios en DATABASES.
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -167,4 +168,12 @@ Los pasos siguientes son configurar en Heroku.
             'PORT': '5432',
         }
     }   
+    ```
+
+15. Lo siguiente es ejecutar los comandos de migraciones.
+
+    ```python
+    heroku run python manage.py migrate
+    # Para crear un superusario en la base de postgresql de Heroku
+    heroku run python manage.py createsuperuser
     ```
