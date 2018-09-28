@@ -147,3 +147,24 @@ Los pasos siguientes son configurar en Heroku.
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # Nuevo
     ```
+
+11. Para la configuración de base de datos con heroku ir al enlace [https://data.heroku.com/](https://data.heroku.com/).
+
+12. Buscar la pestaña de Settings en la plataforma de Heroku.
+
+13. Dar click en el menu de `Database Credentials`.
+
+14. Cambiar la configuración en el setting.py variable `DATABASE`, en este ejemplo:
+    
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'd5lri5hup9n5g4',
+            'USER': 'ljteoysrgrwlty',
+            'PASSWORD': '92f6885b84ebbb8c8787717eadb9719cffebe777eb1b2eae5121cc5f4ea5b1d8',
+            'HOST': 'ec2-54-243-147-162.compute-1.amazonaws.com',  #'127.0.0.1',
+            'PORT': '5432',
+        }
+    }   
+    ```

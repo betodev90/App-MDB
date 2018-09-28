@@ -84,16 +84,26 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mymdb2_db',
+#         'USER': 'django',
+#         'PASSWORD': 'django',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mymdb2_db',
-        'USER': 'django',
-        'PASSWORD': 'django',
-        'HOST': '127.0.0.1',
+        'NAME': 'd5lri5hup9n5g4',
+        'USER': 'ljteoysrgrwlty',
+        'PASSWORD': '92f6885b84ebbb8c8787717eadb9719cffebe777eb1b2eae5121cc5f4ea5b1d8',
+        'HOST': 'ec2-54-243-147-162.compute-1.amazonaws.com',  #'127.0.0.1',
         'PORT': '5432',
     }
-}    
+}       
 
 
 # Password validation
