@@ -47,3 +47,11 @@ Puesta en marcha un proyecto django en este caso utilizaremos Heroku que es un s
 9. En el archivo creado `Procfile` agregar la siguiente línea.
     ```web: gunicorn config.wsgi --log-file -```
 
+    Esto indica que usemos el archivo existente para deploy `config.wsgi` con `gunicorn`, que es un servidor web para producción.
+
+10. Instalar la librería `gunicorn`.
+    
+    ```python
+    pipenv install gunicorn
+    ```
+
