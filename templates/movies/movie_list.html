@@ -15,7 +15,6 @@
                 <th scope="col">Año</th>
                 <th scope="col">Website</th>
                 <th scope="col">Rating</th>
-                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -29,23 +28,7 @@
                     <td>{{ movie.plot }}</td>
                     <td>{{ movie.year }}</td>
                     <td>{{ movie.website|default_if_none:'' }}</td>
-                    <td>{{ movie.rating }}</td>
-                    <td class="text-center">
-                        <div class="btn-group mr30">
-                            <a class="btn btn-primary active" data-toggle="tooltip" data-placement="top" title="Editar"
-                                    href="#">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </a>
-                            <a class="btn btn-warning active" data-toggle="tooltip" data-placement="top" title="Ver detalle"
-                                    href="#">
-                                <i class="fa fa-id-card" aria-hidden="true"></i>
-                            </a>
-                            <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" 
-                            title="Eliminar" href="#">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </td>
+                    <td class='text-center'>{{ movie.rating }}</td>
                 </tr>
             {% empty %}
                 <h4>No existe información que mostrar.</h4>

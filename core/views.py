@@ -18,3 +18,4 @@ class MovieList(ListView):
 
 class MovieDetail(DetailView):
     model = Movie
+    template_name = 'movies/movie_detail.html'
