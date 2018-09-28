@@ -177,3 +177,10 @@ Los pasos siguientes son configurar en Heroku.
     # Para crear un superusario en la base de postgresql de Heroku
     heroku run python manage.py createsuperuser
     ```
+
+16. Verificar el funcionamiento de la aplicación hecho el deploy. 
+17. Listo algunas referencias para realizar el deploy con django:
+
+    * [https://platzi.com/blog/llevar-django-a-produccion/](https://platzi.com/blog/llevar-django-a-produccion/)
+    * [http://blog.mattwoodward.com/2016/07/running-django-application-on-windows.html](http://blog.mattwoodward.com/2016/07/running-django-application-on-windows.html)
+    * [https://platzi.com/blog/llevar-django-a-produccion/](https://platzi.com/blog/llevar-django-a-produccion/)
