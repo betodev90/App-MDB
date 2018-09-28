@@ -5,14 +5,16 @@
 {% endblock %}
 
 {% block content %}
+    <h2>Lista de Películas</h2>
+    <hr>
     <table class="table">
         <thead class="thead-light">
             <tr>
-              <th scope="col">Título</th>
+                <th scope="col">Título</th>
+                <th scope="col">Argumento</th>
                 <th scope="col">Año</th>
-              <th scope="col">Website</th>
-              <th scope="col">Email</th>
-              <th scope="col">Estado</th>
+                <th scope="col">Website</th>
+                <th scope="col">Rating</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -24,6 +26,7 @@
                             {{movie.title}}
                         </a>
                     </td>
+                    <td>{{ movie.plot }}</td>
                     <td>{{ movie.year }}</td>
                     <td>{{ movie.website|default_if_none:'' }}</td>
                     <td>{{ movie.rating }}</td>
