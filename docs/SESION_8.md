@@ -55,3 +55,5 @@ Puesta en marcha un proyecto django en este caso utilizaremos Heroku que es un s
     pipenv install gunicorn
     ```
 
+## Deploy
+
