@@ -36,4 +36,12 @@ Puesta en marcha un proyecto django en este caso utilizaremos Heroku que es un s
     [requires]
     python_version = "3.6"
     ```
-7. 
+
+7. A continuación ejecutar el comando:
+    ```pipenv lock```
+
+    Heroku realmente busca en nuestro archivo `Pipfile.lock` información sobre nuestro entorno virtual, por lo que agregamos la configuración de idioma aquí.
+
+8. Crear archivo `Procfile` archivo especifico para deploy en Heroku.
+
+9. 
