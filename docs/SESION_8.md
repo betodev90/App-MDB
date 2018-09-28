@@ -57,3 +57,6 @@ Puesta en marcha un proyecto django en este caso utilizaremos Heroku que es un s
 
 ## Deploy
 
+Los pasos siguientes son configurar en Heroku.
+
+1. Crear una aplicación en Heroku y `push` el código del proyecto.
