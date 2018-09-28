@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %} Nuevo Cliente {% endblock %} {% block content %}
+
+<h2>Nuevo Cliente</h2>
+{% include 'includes/messages.html' %} {# Como vamos a cargar imagenes de fotos de los estudiantes el formulario debe agregar 'enctype="multipart/form-data' #}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {% for field in form.visible_fields %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label> {{ field }} {% for error in field.errors %}
+        <span class="help-block">{{ error }}</span> {% endfor %}
+    </div>
+    {% endfor %}
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-ok"></span> Guardar
+          </button>
+        <a href="{% url 'orders:clients' %}" class="btn btn-info">Cancelar</a>
+    </div>
+
+</form>
+{% endblock %}

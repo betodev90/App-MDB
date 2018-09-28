@@ -1,0 +1,9 @@
+{# Fragmento a utilzar para retroalimentar al usuario #} 
+
+{% for message in messages %}
+    <div class="alert alert-{% if message.tags %}{% if message.tags == " error " %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}  alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button> {{ message }}
+    </div>
+{% endfor %}

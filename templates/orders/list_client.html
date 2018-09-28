@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de clientes
+{% endblock %}
+
+{% block content %}
+    <h3>Clientes</h3>
+    <hr>
+
+    {# Llamado a los mensajes #}
+    {% include 'includes/messages.html' %}
+    {# Controles formulario de busqueda y boton de Agregar #}
+
+    <div class="row">
+        <div class="col-md-8">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <!-- /.navbar-collapse -->
+                    <div class="container searchbardiv" id="formsearch">
+                        <form role="search" method="get" id="searchform">
+                            <div class="input-group">
+                                <input name="q" class="form-control" placeholder="Escribe los parametros de busqueda" id="buscador">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default"  id="searchsubmit"  type="submit">
+                                        <strong>Busqueda</strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'orders:create_client' %}" class="btn btn-primary">
+                Agregar nuevo
+            </a>
+        </div>
+    </div>
+    <hr />
+    <br>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">DNI</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.dni }}</td>
+                    <td>{{ client.first_name }}</td>
+                    <td>{{ client.last_name }}</td>
+                    <td class="text-center">
+                        <div class="btn-group mr30">
+                            <a class="btn btn-primary active" data-toggle="tooltip" 
+                            data-placement="top" title="Editar"
+                                    href="{% url 'orders:edit_client' pk=client.id %}">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn btn-warning active" data-toggle="tooltip" data-placement="top" 
+                            title="Ver detalle"
+                                    href="{% url 'orders:detail_client' pk=client.id %}">
+                                <i class="fa fa-id-card" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn btn-danger" data-toggle="tooltip" 
+                            data-placement="top" title="Eliminar" 
+                            href="{% url 'orders:delete_client' pk=client.id %}">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% empty %}
+                <h4>No existe información que mostrar en la busqueda/lista</h4>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {# Tag de Django que permite incluir fragmentos de html y reutilizarlos enviando un parametro #}
+    {% include "includes/pagination.html" with pages_obj=page_obj %}
+
+{% endblock %}
+
+{% block extra-js %}
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+{% endblock %}
