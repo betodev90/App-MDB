@@ -12,8 +12,9 @@
 {% block sidebar %}
     <div>
         El rated de la película es:
-        <span class="badget badget-primary">
-                {{ object.rating }} || {{ object.get_rating_display }}
-            </span>
+        <button type="button" class="btn btn-primary"> 
+            <span class="badge badget-primary">{{ object.rating }}</span>
+        </button>
+        <p>{{ object.get_rating_display }}</p>
     </div>
 {% endblock %}
