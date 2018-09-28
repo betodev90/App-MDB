@@ -21,9 +21,19 @@ Puesta en marcha un proyecto django en este caso utilizaremos Heroku que es un s
     Logged in as email@dominio.com
     ```
 
-5. Si el paso previo ha sido exitoso se puede continuar. Se debe realizar los cambios en:
+5. Si el paso previo ha sido exitoso se puede continuar y realizar los siguientes cambios:
 
     * Actualizar `Pipfile.lock`
     * Crear fichero `Procfile`
     * Instalar `gunicorn` para que trabaje como web server
     * Realizar cambios en el fichero de configuración del proyecto `settings.py`
+
+6. Debido que el server de heroku es compatible con la versión `3.6` de python en el fichero `Pipfile` hacer el cambio.
+    
+    ```
+    # Pipfile
+    ...
+    [requires]
+    python_version = "3.6"
+    ```
+7. 
