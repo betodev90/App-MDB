@@ -90,3 +90,60 @@ Los pasos siguientes son configurar en Heroku.
     ```
     heroku config:set DISABLE_COLLECSTATIC=1
     ```
+
+6. En este paso enviamos el codigo del repo a Heroku.
+
+    ```
+    git push heroku master
+    ```
+
+    Finalmente, debemos hacer que su aplicación Heroku en vivo. A medida que los sitios web crecen en tráfico, necesitan servicios adicionales de Heroku, pero para nuestro ejemplo básico, podemos usar el nivel más bajo, web = 1, que también es gratuito.
+
+7. Comando:
+
+    ```
+    heroku ps:scale web=1
+    ```
+8. Para probar: `heroku open`
+
+9. Para los estáticos, instalar la librería:
+
+    ```
+    pipenv install withenoise
+    ```
+
+10. Es necesario actualizar variables de configuración en el `settings.py`
+
+    ```python
+    ...
+    INSTALLED_APPS = [
+        'core',
+        'users',
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'whitenoise.runserver_nostatic', # Nuevo
+        'django.contrib.staticfiles',
+        
+        # Third Packages 
+        'crispy_forms',
+    ]    
+    ...
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware', # Nuevo!
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
+    ...
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Nuevo!
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # Nuevo
+    ```
