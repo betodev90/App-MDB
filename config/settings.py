@@ -25,7 +25,7 @@ SECRET_KEY = '4ddgx6b*juuh@51&ohfb#x@-&g$kd34h+vy+t(vba(_lb5ay)t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL= 'users.CustomUser'
 

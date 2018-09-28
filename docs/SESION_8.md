@@ -60,3 +60,33 @@ Puesta en marcha un proyecto django en este caso utilizaremos Heroku que es un s
 Los pasos siguientes son configurar en Heroku.
 
 1. Crear una aplicación en Heroku y `push` el código del proyecto.
+    En el terminal donde se hizo el paso previo de ingreso de credenciales de heroku, moverse al path del proyecto y ejecutar el comando.
+    `heroku create`
+
+2. Como resultado debe general la URL disponible donde alojaremos el proyecto. Ej:
+    
+    ```
+    (MYMDB-iw5zc0RB) bash-3.2$ heroku create
+    Creating app... done, ⬢ pacific-woodland-70128
+    https://pacific-woodland-70128.herokuapp.com/ | https://git.heroku.com/pacific-woodland-70128.git
+    ```
+
+3. En este paso se necesita agregar un `Hook` for enlazar git en Heroku. Para eso ingresamos el comando.
+
+    ```
+    heroku git:remote -a pacific-woodland-70128
+    ```
+    Destacar que `pacific-woodland-70128` es el nombre de la aplicación en Heroku, que genero automáticamente en el paso anterior.
+
+4. Como resultado muesta:
+
+    ```
+    (MYMDB-iw5zc0RB) bash-3.2$ heroku git:remote -a pacific-woodland-70128
+    set git remote heroku to https://git.heroku.com/pacific-woodland-70128.git
+    ```
+
+5. Deshabilitar en primera instancia los estáticos para optimizar la carga de los mismos.
+
+    ```
+    heroku config:set DISABLE_COLLECSTATIC=1
+    ```
